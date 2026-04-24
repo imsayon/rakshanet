@@ -1,0 +1,43 @@
+# ── Dependencies ──
+node_modules/
+
+# ── Build outputs ──
+dist/
+*.egg-info/
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+*.egg
+
+# ── Environment ──
+.env
+.venv/
+venv/
+
+# ── IDE / Editor ──
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.info
+.kiro
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+
+# ── ML Models (large binaries) & Data ──
+models/*.pkl
+models/*.pt
+models/*.json
+models/*.txt
+models/nlp_model/
+data/*.parquet
+data/*.csv
+# ── Gemini ──
+.gemini/

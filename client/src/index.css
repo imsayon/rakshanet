@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Sora', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Brand Colors */
+  --color-primary:        #00D46A;
+  --color-primary-dim:    #00A854;
+  --color-allow:          #00D46A;
+  --color-friction:       #F5A623;
+  --color-block:          #FF4757;
+  --color-allow-glow:     rgba(0, 212, 106, 0.2);
+  --color-friction-glow:  rgba(245, 166, 35, 0.2);
+  --color-block-glow:     rgba(255, 71, 87, 0.2);
+}
+
+.font-display { font-family: var(--font-display); }
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  background: #090d18;
+  color: #f1f5f9;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+/* ── Fonts ── */
+.font-mono { font-family: var(--font-mono); }
+
+/* ── Background grid ── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* ── Glow effects ── */
+.glow-cyan  { box-shadow: 0 0 24px rgba(6,182,212,0.18); }
+.glow-rose  { box-shadow: 0 0 24px rgba(244,63,94,0.18); }
+.glow-violet{ box-shadow: 0 0 24px rgba(139,92,246,0.18); }
+.text-glow-cyan { text-shadow: 0 0 14px rgba(6,182,212,0.5); }
+
+/* ── Pulse dot ── */
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 1; }
+  60%  { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+.pulse-dot { animation: pulse-ring 2s infinite; }
+
+/* ── Slide-in animation ── */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.slide-in { animation: slideInLeft 0.25s ease-out; }
+
+/* ── Count-up ── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-up { animation: countUp 0.4s ease-out; }
+
+/* ── Fade up ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.5s ease-out both; }
+
+/* ── Range input reset ── */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  box-shadow: 0 0 8px rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+/* ── Network canvas ── */
+#network-canvas {
+  width: 100%;
+  height: 320px;
+  border-radius: 12px;
+  display: block;
+}
+
+/* ── Thin top-border shimmer on hover ── */
+.panel-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.panel-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(6,182,212,0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.panel-shimmer:hover::before { opacity: 1; }
+
+/* ── Score badge ring ── */
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Payment Flow Utilities ── */
+.glow-allow { box-shadow: 0 0 20px var(--color-allow-glow); }
+.glow-friction { box-shadow: 0 0 20px var(--color-friction-glow); }
+.glow-block { box-shadow: 0 0 20px var(--color-block-glow); }
+.mesh-gradient {
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(0, 212, 106, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 168, 84, 0.05) 0%, transparent 50%);
+}
+
+@keyframes draw-check {
+  0%   { stroke-dashoffset: 50; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse-ring-expand {
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.animate-draw-check {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: draw-check 0.5s ease-out 0.2s forwards;
+}
+
+.animate-pulse-ring-expand {
+  animation: pulse-ring-expand 1.5s ease-out infinite;
+}

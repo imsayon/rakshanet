@@ -1,0 +1,8 @@
+pytest==9.0.1
+httpx==0.28.1
+httpcore==1.0.9
+locust==2.43.4
+# Integration tests need a PostgreSQL driver.
+# Install one of:
+#   pip install psycopg2-binary
+#   pip install psycopg[binary]
